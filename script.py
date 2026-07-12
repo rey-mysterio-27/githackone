@@ -5,24 +5,13 @@ import sys
 import time
 from datetime import datetime, timedelta
 
-# ============================================
-# GitHub Contribution Graph Hack
-#
-# Created by Aura Farmer
-# GitHub: https://github.com/aurafarmerone
-#
-# If you like this project, give it a ⭐
-# ============================================
 
 PATTERN_FILE = "pattern.json"
 FILE_PATH = "info.txt"
 
-COMMITS_PER_PIXEL = 5   # lighter than darkest green
+COMMITS_PER_PIXEL = 5  
 
 
-# -------------------------------
-# Loading Animation (3 seconds)
-# -------------------------------
 def loading_animation(duration=3):
     animation = "|/-\\"
     end_time = time.time() + duration
@@ -41,9 +30,6 @@ def loading_animation(duration=3):
     print("☑️")
 
 
-# -------------------------------
-# Credit Banner (Start)
-# -------------------------------
 def show_start_credit():
     print(r"""
           
@@ -51,15 +37,12 @@ def show_start_credit():
 ┃┓┓╋┣┫┓┏┣┓  ┃ ┏┓┏┳┓┏┳┓┓╋  ┃ ┏┓┣┓
 ┗┛┗┗┛┗┗┻┗┛  ┗┛┗┛┛┗┗┛┗┗┗┗  ┗┛┗┻┗┛                       
 
-Created by Aura Farmer
-GitHub: https://github.com/aurafarmerone
+Created by Rey-Mysterio-27
+GitHub: https://github.com/rey-mysterio-27
 ----------------------------------------
 """)
 
 
-# -------------------------------
-# Credit Banner (End)
-# -------------------------------
 def show_end_credit():
     print(r"""
           
@@ -74,17 +57,14 @@ def show_end_credit():
 
 ----------------------------------------
 ⭐ If you like this project, give it a star on GitHub!
-👉 https://github.com/aurafarmerone/github-contribution-graph-hack
+👉 https://github.com/rey-mysterio-27/githackone
 
-Made with ❤️  by Aura Farmer
+Made with ❤️  by Rey-Mysterio-27
 ----------------------------------------
 """)
 
 
 
-# -------------------------------
-# Git Commit (FIXED)
-# -------------------------------
 def git_commit(message, commit_date):
     subprocess.run(["git", "add", FILE_PATH], check=True)
 
@@ -98,7 +78,7 @@ def git_commit(message, commit_date):
         [
             "git",
             "commit",
-            "--allow-empty",   # ✅ FIX: allows commit even if no file changes
+            "--allow-empty",   
             "-m",
             message,
             "--date",
@@ -122,7 +102,7 @@ def load_pattern():
 
 def first_sunday(year):
     d = datetime(year, 1, 1)
-    while d.weekday() != 6:  # Sunday
+    while d.weekday() != 6:  
         d += timedelta(days=1)
     return d
 
@@ -134,7 +114,7 @@ def make_commits_from_pattern(year):
     for row_idx, row in enumerate(pattern):
         for col_idx, char in enumerate(row):
             if char == " ":
-                continue  # empty pixel
+                continue  
 
             commit_date = start_date + timedelta(
                 weeks=col_idx,
@@ -152,9 +132,6 @@ def make_commits_from_pattern(year):
     git_push()
 
 
-# -------------------------------
-# Entry Point
-# -------------------------------
 if __name__ == "__main__":
     loading_animation(3)
     show_start_credit()
